@@ -1,9 +1,11 @@
-import React, { useState, prevState, useEffect } from "react";
+import React, { useState, prevState, useEffect} from "react";
 import { db } from "../config/fire-config";
 import { addDoc, doc, collection } from "firebase/firestore";
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function Addcomponent() {
+  const Navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
     type: "",
@@ -29,7 +31,8 @@ export default function Addcomponent() {
   }
   const handleSubmit = async () => {
     await addDoc(comp_ref, data);
-    setData({name:"",description:"",type:"",category:"",frequency:""})
+    setData({name:"",description:"",type:"",category:"",frequency:""});
+    Navigate("/home");
   };
 
   return (
@@ -63,7 +66,7 @@ export default function Addcomponent() {
       <br />
       <span className="font-bold">Upload component file</span>
       <input type="file" />
-      <span className="font-bold">Description</span>
+      <span className="font-bold">Code</span>
       <textarea
         onChange={handleDescription}
         value={data.description}

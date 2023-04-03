@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/fire-config";
 import { NavLink } from "react-router-dom";
+import './Login.css' 
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -63,13 +64,14 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <p className="text-center font-bold text-4xl">Software Component Cataloguing Software  </p>
+    <div className="back h-screen">
+      <p className="text-center font-bold text-4xl text-blue-200">Software Component Cataloguing Software  </p>
       <form
         onSubmit={signUpHandler}
-        className="mt-32 flex items-center justify-center gap-4"
+        className="mt-32 flex items-center justify-center gap-4 "
+        
       >
-        <label htmlFor="email">Email:</label>
+        <label className="text-white" htmlFor="email">Email:</label>
         <input
           type="email"
           id="email"
@@ -77,7 +79,7 @@ export default function Login() {
           value={email}
           onChange={emailHandler}
         />
-        <label htmlFor="password">Password:</label>
+        <label className="text-white" htmlFor="password " >Password:</label>
         <input
           type="password"
           id="password"
@@ -94,7 +96,7 @@ export default function Login() {
         onSubmit={signInHandler}
         className="mt-32 flex items-center justify-center gap-4"
       >
-        <label htmlFor="em">Email:</label>
+        <label className="text-white" htmlFor="em">Email:</label>
         <input
           type="email"
           id="em"
@@ -102,7 +104,7 @@ export default function Login() {
           value={emailLog}
           onChange={emailLogHandler}
         />
-        <label htmlFor="pass">Password:</label>
+        <label className="text-white" htmlFor="pass">Password:</label>
         <input
           type="password"
           id="pass"
@@ -115,7 +117,7 @@ export default function Login() {
         </button>
       </form>
       <div className="text-center mt-10">
-        <NavLink to="/reset" className="underline text-blue-500">Forgot Password</NavLink>
+        <NavLink to="/reset" className="underline text-white">Forgot Password</NavLink>
       </div>
     </div>
   );

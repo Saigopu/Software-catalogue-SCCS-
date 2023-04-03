@@ -4,9 +4,8 @@ import { db } from "../config/fire-config";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Home() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [components, setComponents] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
 
@@ -78,13 +77,20 @@ export default function Home() {
 
               <div>{item.category}</div>
               <br />
-              <div>By author</div>
-              <button
-                onClick={() => handleDelete(item.id)}
-                className="bg-red-600 p-2 rounded"
-              >
-                Delete
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => navigate("/modify")}
+                  className="bg-green-500 p-2 rounded"
+                >
+                  Modify
+                </button>
+                <button
+                  onClick={() => handleDelete(item.id)}
+                  className="bg-red-600 p-2 rounded"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -99,7 +105,7 @@ export default function Home() {
             <br />
             <div className="flex gap-2">
               <button
-                onClick={()=>navigate("/modify")}
+                onClick={() => navigate("/modify")}
                 className="bg-green-500 p-2 rounded"
               >
                 Modify
